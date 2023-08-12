@@ -1,0 +1,31 @@
+/*бщие стили
+==========*/
+
+body {
+    width: 100%
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1170px;
+
+    margin: 0 auto;
+}
+
+
+
+/* HEADER
+=============== */
+
+.header {
+    background-color: #eee;
+}
