@@ -3,13 +3,19 @@ from django.db import models
 
 # Create your models here.
 class AbstractProduct(models.Model):
+    id = models.AutoField(
+        primary_key=True
+    )
+
     title = models.CharField(
         max_length=64,
         verbose_name='Название'
     )
 
-    icon = models.ImageField(
-        verbose_name='Картинка'
+    icon = models.ForeignKey(
+        'Images',
+        on_delete=models.CASCADE,
+        verbose_name='Изображение'
     )
 
     price = models.ForeignKey(
@@ -17,6 +23,25 @@ class AbstractProduct(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Цена'
     )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        abstract = True
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
+
+
+class Images(models.Model):
+    image = models.ImageField(
+        upload_to='images/',
+        default='images/testCoffee.jpg',
+        verbose_name='Картинка'
+    )
+
+    def __str__(self):
+        return str(self.image)
 
 
 class Coffee(AbstractProduct):

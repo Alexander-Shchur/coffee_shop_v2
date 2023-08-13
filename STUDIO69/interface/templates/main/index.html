@@ -6,11 +6,36 @@
 
 
 {% block content %}
+<div class="main_content">
+    <h1>SLIDER</h1>
+</div>
+
 <div class="container">
-    <h1 class="main__title">
+    <ul class="main__choice">
+        <li class="choice_item">Кофе</li>
+        <li class="choice_item">Аксессуары</li>
+        </ul>
         <div class="main_content">
             <p>Lorem ipsum dolor sit amet.</p>
         </div>
-    </h1>
+    </ul>
+
+    <div class="product_grid">
+        {% for product in products %}
+        <div class="product_card">
+            <img src="media/{{ product.icon }}" alt="{{ product.title }}" class="product__img">
+            <div class="product__details">
+                <h3 class="product__title">{{ product.title }}</h3>
+                <div class="product_price">Цена: {{ product.price }} </div>
+                <div class="product__quantity">
+                    <button class=""quantity_btn minus__btn>-</button>
+                    <input type="text" class="quantity__input" value="1">
+                    <button class="quantity_btn plus__btn">+</button>
+                </div>
+                <button class="buy__btn">Купить</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
